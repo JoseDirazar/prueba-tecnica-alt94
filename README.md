@@ -1,3 +1,7 @@
+## Como correr la app
+
+Correr `npm install && npm run preview` para levantar el proyecto y correr el script de seed para la base de datos y asegurarse que la información se encuentra en la db
+
 ## Resumen
 
 Hola! Este es un resumen de lo que hice:
