@@ -1,8 +1,8 @@
-import { TProperty } from "@/types/PropertyTypes";
+import { Property } from "@/types/PropertyTypes";
 import PropertyCard from "./PropertiyCard";
 
 interface PropertiesContainerProps {
-  properties: TProperty[];
+  properties: Property[];
 }
 
 export default function PropertiesContainer({
