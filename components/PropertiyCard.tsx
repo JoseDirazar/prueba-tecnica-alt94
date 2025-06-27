@@ -1,7 +1,7 @@
-import { TProperty } from "@/types/PropertyTypes";
+import { Property } from "@/types/PropertyTypes";
 
 interface PropertyProps {
-  property: TProperty;
+  property: Property;
 }
 
 export default function PropertyCard({ property }: PropertyProps) {
