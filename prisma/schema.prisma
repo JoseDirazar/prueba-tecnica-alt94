@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Property {
+  id               Int      @id @default(autoincrement())
+  titulo           String
+  ciudad           String
+  tipo             String
+  precio           Int
+  ambientes        Int
+  metros_cuadrados Int
+  imagen           String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("properties")
+}
