@@ -1,4 +1,4 @@
-export type TProperty = {
+export type Property = {
   id: number;
   titulo: string;
   ciudad: string;
