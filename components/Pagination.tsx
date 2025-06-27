@@ -44,11 +44,13 @@ export default function Pagination({
       <button
         onClick={onPrevPage}
         disabled={!hasPrevPage}
-        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-          hasPrevPage
-            ? "bg-blue-500 text-white hover:bg-blue-600"
-            : "bg-gray-200 text-gray-500 cursor-not-allowed"
-        }`}
+        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors
+          ${
+            hasPrevPage
+              ? "bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
+              : "bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-800 dark:text-gray-400"
+          }
+        `}
       >
         Anterior
       </button>
@@ -58,11 +60,13 @@ export default function Pagination({
           <button
             key={page}
             onClick={() => onPageChange(page)}
-            className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-              page === currentPage
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-            }`}
+            className={`px-3 py-2 rounded-md text-sm font-medium transition-colors
+              ${
+                page === currentPage
+                  ? "bg-blue-600 text-white dark:bg-blue-700"
+                  : "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+              }
+            `}
           >
             {page}
           </button>
@@ -72,11 +76,13 @@ export default function Pagination({
       <button
         onClick={onNextPage}
         disabled={!hasNextPage}
-        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-          hasNextPage
-            ? "bg-blue-500 text-white hover:bg-blue-600"
-            : "bg-gray-200 text-gray-500 cursor-not-allowed"
-        }`}
+        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors
+          ${
+            hasNextPage
+              ? "bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
+              : "bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-800 dark:text-gray-400"
+          }
+        `}
       >
         Siguiente
       </button>

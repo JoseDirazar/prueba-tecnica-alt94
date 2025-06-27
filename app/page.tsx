@@ -39,7 +39,7 @@ export default function Home() {
           />
         )}
 
-        <div className="w-full items-center sm:items-center sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-indigo-400">
+        <div className="w-full items-center sm:items-center sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <PropertiesContainer properties={properties} />
         </div>
 
