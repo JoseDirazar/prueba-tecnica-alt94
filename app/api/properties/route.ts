@@ -1,32 +1,49 @@
-import { TProperty } from "@/types/PropertyTypes";
-import { promises as fs } from "fs";
+import { prisma } from "@/lib/prismadb";
 import { NextRequest } from "next/server";
-import path from "path";
 
 export async function GET(req: NextRequest) {
   try {
-    const city = req.nextUrl.searchParams.get("city");
-    const filePath = path.join(
-      process.cwd(),
-      "db",
-      "properties_mock_100_clean.json"
-    );
-    const fileContent = await fs.readFile(filePath, "utf-8");
-    const allProperties: TProperty[] = JSON.parse(fileContent);
+    const { searchParams } = new URL(req.url);
+    const city = searchParams.get("city");
+    const page = parseInt(searchParams.get("page") || "1");
+    const limit = parseInt(searchParams.get("limit") || "5");
+    const skip = (page - 1) * limit;
 
-    let filteredProperties = allProperties;
-    if (city) {
-      filteredProperties = allProperties.filter(
-        (property) => property.ciudad?.toLowerCase() === city.toLowerCase()
-      );
-    }
+    const whereClause = city
+      ? {
+          ciudad: city,
+        }
+      : {};
 
-    const sortedProperties = filteredProperties.sort((a, b) => {
-      if (!a.ciudad || !b.ciudad) return 0;
-      return a.ciudad.localeCompare(b.ciudad);
+    const [properties, totalCount] = await Promise.all([
+      prisma.property.findMany({
+        where: whereClause,
+        orderBy: {
+          ciudad: "asc",
+        },
+        skip,
+        take: limit,
+      }),
+      prisma.property.count({
+        where: whereClause,
+      }),
+    ]);
+
+    const totalPages = Math.ceil(totalCount / limit);
+    const hasNextPage = page < totalPages;
+    const hasPrevPage = page > 1;
+
+    return Response.json({
+      properties,
+      pagination: {
+        currentPage: page,
+        totalPages,
+        totalCount,
+        hasNextPage,
+        hasPrevPage,
+        limit,
+      },
     });
-
-    return Response.json(sortedProperties);
   } catch (error) {
     console.error("Error loading properties:", error);
     return new Response("Error loading properties", { status: 500 });
