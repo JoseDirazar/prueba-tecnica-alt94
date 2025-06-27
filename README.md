@@ -1,3 +1,50 @@
+## Resumen
+
+Hola! Este es un resumen de lo que hice:
+
+Para esta prueba decidí usar **Next.js** para crear rutas API e interactuar con ellas desde un frontend en React, simulando una arquitectura tradicional con un backend mínimo.
+
+Evitando algunas funcionalidades propias de Next.js, intenté imitar un flujo más cercano a una app React + backend tipo Nest.js.
+
+---
+
+## ⚙️ Detalles
+
+### 1. API para leer archivo JSON
+
+Creé una ruta API que lee un archivo JSON local para obtener y devolver los datos al cliente.
+
+### 2. Renderizado inicial en el frontend
+
+Rendericé los datos en la página principal con la idea de luego personalizarlos según la ubicación del usuario y filtrar por ciudad.
+
+### 3. Migración a SQLite + Prisma
+
+Aunque empecé usando `.sort()` y `.filter()` sobre el JSON, migré a una **base SQLite con Prisma ORM** para tener mejor estructura y escalabilidad. Esto agregó algo de complejidad pero simula mejor un entorno real.
+
+### 4. Poblado de la base de datos
+
+Usé IA para generar un script de seed y poblar la base con los datos de propiedades.
+
+### 5. Paginación y filtro por ciudad
+
+Implementé **paginación** y uso de parámetros en la API para filtrar por **ciudad y página**. En el frontend agregué un input para filtrar por ciudad.
+
+### 6. Vista de detalles de propiedad
+
+- Creé una ruta API para obtener una propiedad por **ID** y devolver también algunas **recomendaciones**.
+- Hice una página de detalles para mostrar toda la información.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js** (API routes + React frontend)
+- **Prisma ORM** (for DB interaction)
+- **SQLite** (lightweight DB for the test)
+- **TypeScript**
+- **TailwindCSS** (optional, if you used it)
+
 # 🧩 Prueba Técnica – Desarrollo Web
 
 **Alt94 Strategy & Development**
