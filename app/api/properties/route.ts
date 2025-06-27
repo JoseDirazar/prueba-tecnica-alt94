@@ -5,7 +5,7 @@ import path from "path";
 
 export async function GET(req: NextRequest) {
   try {
-    const state = req.nextUrl.searchParams.get("state");
+    const city = req.nextUrl.searchParams.get("city");
     const filePath = path.join(
       process.cwd(),
       "db",
@@ -15,9 +15,9 @@ export async function GET(req: NextRequest) {
     const allProperties: TProperty[] = JSON.parse(fileContent);
 
     let filteredProperties = allProperties;
-    if (state) {
+    if (city) {
       filteredProperties = allProperties.filter(
-        (property) => property.ciudad?.toLowerCase() === state.toLowerCase()
+        (property) => property.ciudad?.toLowerCase() === city.toLowerCase()
       );
     }
 
